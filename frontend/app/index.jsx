@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
   },
 
   logoBox: {
-    width: 78,
-    height: 78,
+    width: 90,
+    height: 90,
     backgroundColor: "#18233A",
     borderRadius: 14,
     alignItems: "center",
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 52,
-    height: 52,
+    width: 60,
+    height: 60,
     backgroundColor: "#FFFFFF",
     borderRadius: 8,
     alignItems: "center",
@@ -60,13 +60,13 @@ const styles = StyleSheet.create({
   
   logoText: {
     color: "#1769FF",
-    fontSize: 25,
+    fontSize: 40,
     fontWeight: "900",
   },
 
   appName: {
     color: "#FFFFFF",
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: "700",
     marginBottom: 8,
   },
