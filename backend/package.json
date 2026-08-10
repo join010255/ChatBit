@@ -9,5 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "nodemon": "^3.1.14",
+    "sequelize": "^6.37.8"
+  }
 }
