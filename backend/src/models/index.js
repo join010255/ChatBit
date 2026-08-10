@@ -43,9 +43,3 @@ Message.belongsTo(User, {
   foreignKey: "sender_id",
   as: "sender",
 });
-
-export {
-  User,
-  Conversation,
-  Message,
-};
