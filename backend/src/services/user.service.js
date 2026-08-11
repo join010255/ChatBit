@@ -30,11 +30,15 @@ class UserService{
             if(userData){
                 throw new Error("Emeil is Redy Exisit")
             }
-            httpBody.password = await Password.hashPassword(httpBody.password);
-            await User.create(httpBody)
-
+            const passwordHashed = await Password.hashPassword(httpBody.password);
+            await User.create({
+                ...httpBody,
+                password : passwordHashed
+            })
         }catch(error){
-            console.log(error)
+            throw new Error("Server Error")
         }
     }
 }
+
+export default new UserService();
