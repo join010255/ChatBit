@@ -25,12 +25,12 @@ export default function login() {
             keyboardShouldPersist="handled"
             >
         <Image
-         source={require("../../assets/images/unnamed.png")}
+         source={require("../../assets/images/unnamed-removebg-preview.png")}
          style={styles.logo}
         />
 
         <View style={styles.header}>
-            <Text style={styles.title}>Bon retour ✋</Text>
+            <Text style={styles.title}>Bon retour</Text>
 
             <Text style={styles.subtitle}>
                 Connectez-vous à votre compte
@@ -79,7 +79,7 @@ export default function login() {
                 </Text>
 
             <TouchableOpacity 
-             onPress={() => router.push("/(auth)/register")}
+             onPress={() => router.push("/register")}
             >
             <Text style={styles.registerLink}>S`inscrire</Text>
             </TouchableOpacity>    
@@ -105,10 +105,10 @@ const styles = StyleSheet.create({
     },
 
     logo: {
-        width: 70,
-        height: 70,
+        width: 400,
+        height: 200,
         alignSelf: "center",
-        marginBottom: 10,
+        marginBottom: -40,
         resizeMode: "contain",
     },
 
@@ -122,11 +122,15 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: "700",
         marginBottom: 8,
+           alignItems : "center",
+        justifyContent: "center",
+    marginLeft:40,
     },
 
     subtitle: {
         color: "#8D99B5",
         fontSize: 15,
+     
     },
 
     inputContainer: {
