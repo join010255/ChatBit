@@ -34,7 +34,7 @@ class UserService{
             await User.create({
                 ...httpBody,
                 password : passwordHashed
-            })
+            });
         }catch(error){
             throw new Error("Server Error")
         }
