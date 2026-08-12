@@ -15,7 +15,7 @@ export default function Home() {
         <View style={styles.container}>
             <ScrollView
             contentContainerStyle={styles.content}
-            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             >
          <View style={styles.header}>
             <View style={styles.headerLeft}>
@@ -23,8 +23,6 @@ export default function Home() {
               source={require("../../assets/images/chat.png")}
               style={styles.logo}
              />
-
-             <Text style={styles.appName}>ChatBit</Text>
             </View>
 
             <TouchableOpacity activeOpacity={0.7}>
@@ -67,12 +65,12 @@ export default function Home() {
              style={styles.newConversationButton}
              activeOpacity={0.8}
              onPress={() =>
-                router.push("/(client)/new-convesrsation")
+                router.push("/(client)/new-conversation")
              }
             >
                 <Ionicons
-                 name="cahtbox"
-                 size={12}
+                 name="cahtbox-outline"
+                 size={18}
                  color="#FFFFFF"
                 />
 
@@ -109,7 +107,7 @@ export default function Home() {
                         • En attente
                     </Text>
                 </View>
-                <Text style={styles.data}>Il y a 10 min</Text>
+                <Text style={styles.date}>Il y a 10 min</Text>
             </View>
             <Text style={styles.conversationTitle}>
                 Problème de livraison commande
@@ -149,14 +147,14 @@ export default function Home() {
                       </Text>
                 </View>
 
-                <Text style={styles.conversaytionTitle}>
+                <Text style={styles.conversationTitle}>
                     Demande de remboursement
                     </Text>
             </View>
 
             <Text 
               style={styles.messagePreview}
-              numberOflines={1}
+              numberOfLines={1}
             >
                 L'agent Youssef est en train d'examiner votr...
             </Text>
@@ -180,9 +178,280 @@ export default function Home() {
                 </Text>
             </View>
 
-            <></>
+            <Text style={styles.conversationTitle}>
+                Question sur la garantie
+            </Text>
           </TouchableOpacity>
             </ScrollView>
+
+            <View style={styles.bottomNav}>
+                <TouchableOpacity
+                  style={styles.navItem}
+                    onPress={() =>
+                      router.replace("/(client)/home")
+                    }
+                    >
+                        <Ionicons
+                         name="home"
+                        size={22}
+                        color="#AFC2FF"
+                        />
+                        <Text style={styles.navText}>Acceuil</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                style={styles.navItem}
+                onPress={() =>
+                    router.replace("/(client)/conversations")
+                }
+                >
+                 <Ionicons
+                   name="chatbubble-outline"
+                   size={22}
+                   color="#6F7C99"
+                 />
+                 <Text style={styles.navText}>Conversations</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-    )
+    );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#05051F",
+  },
+
+  content: {
+    paddingHorizontal: 16,
+    paddingTop: 20,
+    paddingBottom: 30,
+  },
+
+  
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 32,
+  },
+
+  headerLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+
+  logo: {
+   width: 45,
+        height: 45,
+        alignSelf: "center",
+        marginBottom: -40,
+        resizeMode: "contain",
+  },
+
+ 
+
+  
+  welcome: {
+    marginBottom: 22,
+  },
+
+  title: {
+    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: "800",
+    marginBottom: 4,
+  },
+
+
+  subtitle: {
+    color: "#D5DBEA",
+    fontSize: 12,
+    lineHeight: 17,
+  },
+
+
+  helpCard: {
+    backgroundColor: "#AFC2FF",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 24,
+  },
+
+  helpTitle: {
+    color: "#071027",
+    fontSize: 18,
+    fontWeight: "800",
+    marginBottom: 10,
+  },
+
+  helpText: {
+    color: "#33456F",
+    fontSize: 11,
+    lineHeight: 17,
+    marginBottom: 14,
+  },
+
+  newConversationButton: {
+    height: 40,
+    backgroundColor: "#071027",
+    borderRadius: 7,
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+
+  newConversationText: {
+    color: "#FFFFFF",
+    fontSize: 11,
+    fontWeight: "600",
+    marginLeft: 5,
+  },
+
+  
+  sectionHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 12,
+  },
+
+  sectionTitle: {
+    color: "#FFFFFF",
+    fontSize: 17,
+    fontWeight: "800",
+  },
+
+  seeAll: {
+    color: "#FFFFFF",
+    fontSize: 10,
+    fontWeight: "600",
+  },
+
+  
+  conversationCard: {
+    backgroundColor: "#14142D",
+    borderRadius: 10,
+    padding: 14,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#242642",
+  },
+
+  cardTop: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 9,
+  },
+
+  statusWaiting: {
+    backgroundColor: "#3A321C",
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+
+  statusWaitingText: {
+    color: "#F5C84B",
+    fontSize: 9,
+    fontWeight: "700",
+  },
+
+  statusProgress: {
+    backgroundColor: "#142B4A",
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+
+  statusProgressText: {
+    color: "#5EA1FF",
+    fontSize: 9,
+    fontWeight: "700",
+  },
+
+  statusClosed: {
+    backgroundColor: "#222938",
+    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+
+  statusClosedText: {
+    color: "#8991A5",
+    fontSize: 9,
+    fontWeight: "700",
+  },
+
+  date: {
+    color: "#8991A5",
+    fontSize: 9,
+    marginLeft: 8,
+  },
+
+  conversationTitle: {
+    color: "#FFFFFF",
+    fontSize: 13,
+    fontWeight: "700",
+    marginBottom: 3,
+  },
+
+  orderNumber: {
+    color: "#FFFFFF",
+    fontSize: 11,
+    fontWeight: "600",
+    marginBottom: 6,
+  },
+
+  messagePreview: {
+    color: "#7D86A0",
+    fontSize: 10,
+    lineHeight: 15,
+  },
+
+  
+  agentRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 6,
+  },
+
+  avatar: {
+    width: 25,
+    height: 25,
+    borderRadius: 13,
+    backgroundColor: "#24314A",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 7,
+  },
+
+  avatarText: {
+    fontSize: 13,
+  },
+
+
+  bottomNav: {
+    height: 70,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#14142D",
+    borderTopWidth: 1,
+    borderTopColor: "#20203A",
+  },
+
+  navItem: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  navText: {
+    color: "#777F99",
+    fontSize: 10,
+    marginTop: 5,
+  },
+
+ 
+});
+   
