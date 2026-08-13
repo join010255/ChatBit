@@ -9,14 +9,27 @@ import {
     Image,
 } from "react-native";
 import { router } from "expo-router";
+import { loginSchema } from "../../validations/loginSchema";
 
 export default function login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
-        router.replace("/(client)/home");
-    };
+     const handleLogin = () => {
+  const result = loginSchema.safeParse({
+    email: email.trim(),
+    password,
+  });
+
+  if (!result.success) {
+    console.log(result.error.issues);
+    return;
+  }
+
+  console.log("Validation réussie");
+  router.replace("/(client)/home");
+};
+    
 
     return (
         <View style={styles.container}>

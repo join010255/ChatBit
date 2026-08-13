@@ -25,10 +25,10 @@ export default function Home() {
              />
             </View>
 
-            <TouchableOpacity activeOpacity={0.7}>
+            <TouchableOpacity activeOpacity={0.8}>
                 <Ionicons
                  name="search-outline"
-                 size={25}
+                 size={30}
                  color="#AFC2FF"
                 />
             </TouchableOpacity>
@@ -69,7 +69,7 @@ export default function Home() {
              }
             >
                 <Ionicons
-                 name="cahtbox-outline"
+                 name="chatbox-outline"
                  size={18}
                  color="#FFFFFF"
                 />
@@ -85,15 +85,7 @@ export default function Home() {
                 conversations récentes
             </Text>
 
-            <TouchableOpacity
-             onPress={() =>
-                router.push("/(client)/conversations")
-             }
-            >
-                <Text style={styles.seeAll}>
-                    Voir tout
-                </Text>
-            </TouchableOpacity>
+           
          </View>
         
          <TouchableOpacity
@@ -184,35 +176,6 @@ export default function Home() {
           </TouchableOpacity>
             </ScrollView>
 
-            <View style={styles.bottomNav}>
-                <TouchableOpacity
-                  style={styles.navItem}
-                    onPress={() =>
-                      router.replace("/(client)/home")
-                    }
-                    >
-                        <Ionicons
-                         name="home"
-                        size={22}
-                        color="#AFC2FF"
-                        />
-                        <Text style={styles.navText}>Acceuil</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                style={styles.navItem}
-                onPress={() =>
-                    router.replace("/(client)/conversations")
-                }
-                >
-                 <Ionicons
-                   name="chatbubble-outline"
-                   size={22}
-                   color="#6F7C99"
-                 />
-                 <Text style={styles.navText}>Conversations</Text>
-                </TouchableOpacity>
-            </View>
         </View>
     );
 }
@@ -242,8 +205,8 @@ const styles = StyleSheet.create({
   },
 
   logo: {
-   width: 45,
-        height: 45,
+   width: 100,
+        height: 90,
         alignSelf: "center",
         marginBottom: -40,
         resizeMode: "contain",

@@ -9,6 +9,7 @@ import {
  Image,
 } from "react-native";
 import { router } from "expo-router";
+import { registerSchema } from "../../validations/registerSchema";
 
 export default function Register() {
     const [fullName,setFullName] = useState("");
@@ -16,9 +17,23 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleRegister = () => {
-        router.replace("/(client)/home");
-    };
+   const handleRegister = () => {
+  const result = registerSchema.safeParse({
+    fullName,
+    email,
+    password,
+    confirmPassword,
+  });
+
+  if (!result.success) {
+    console.log(result.error.issues);
+    return;
+  }
+
+  console.log("Validation réussie");
+
+  router.replace("/(client)/home");
+};
 
     return (
      <View style={styles.container}>
@@ -149,8 +164,8 @@ const styles = StyleSheet.create({
     },
 
     logo: {
-         width: 400,
-        height: 200,
+         width: 180,
+        height: 100,
         alignSelf: "center",
         marginBottom: -40,
         resizeMode: "contain",
