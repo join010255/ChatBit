@@ -7,414 +7,393 @@ import {
     ScrollView,
     Image,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 
 export default function Home() {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <ScrollView
-            contentContainerStyle={styles.content}
-            showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.content}
+                showsVerticalScrollIndicator={false}
             >
-         <View style={styles.header}>
-            <View style={styles.headerLeft}>
-             <Image
-              source={require("../../assets/images/chat.png")}
-              style={styles.logo}
-             />
-            </View>
 
-            <TouchableOpacity activeOpacity={0.8}>
-                <Ionicons
-                 name="search-outline"
-                 size={30}
-                 color="#AFC2FF"
-                />
-            </TouchableOpacity>
-         </View>
+                <View style={styles.header}>
+                    <View style={styles.headerLeft}>
+                        <Image
+                            source={require("../../assets/images/chat.png")}
+                            style={styles.logo}
+                        />
+                    </View>
+                </View>
 
-         <View style={styles.welcome}>
-            <Text style={styles.title}>
-                Bonjour, Khadija
-            </Text>
+                <View style={styles.welcome}>
+                    <Text style={styles.title}>
+                        Bonjour, Khadija
+                    </Text>
 
-            <Text style={styles.subtitle}>
-                Comment pouvons-nous vous aider
-            </Text>
+                    <Text style={styles.subtitle}>
+                        Comment pouvons-nous vous aider
+                    </Text>
 
-            <Text style={styles.subtitle}>
-                aujourd'hui ?
-            </Text>
-         </View>
-
-         <View style={styles.helpCard}>
-            <Text style={styles.helpTitle}>
-                Besoin d'aide ?
-            </Text>
-
-            <Text style={styles.helpText}>
-                Notre équipe de support est là pour
-                {"\n"}
-                répondre à vos questions sur vos
-                {"\n"}
-                commandes Souq Express.
-            </Text>
-
-            <TouchableOpacity
-             style={styles.newConversationButton}
-             activeOpacity={0.8}
-             onPress={() =>
-                router.push("/(client)/new-conversation")
-             }
-            >
-                <Ionicons
-                 name="chatbox-outline"
-                 size={18}
-                 color="#FFFFFF"
-                />
-
-                <Text style={styles.newConversationText}>
-                    Nouvelle conversation
-                </Text>
-            </TouchableOpacity>
-         </View>
-
-         <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>
-                conversations récentes
-            </Text>
-
-           
-         </View>
-        
-         <TouchableOpacity
-           style={styles.conversationCard}
-           activeOpacity={0.8}
-           onPress={() => router.push("/(client)/chat")}
-         >
-            <View style={styles.cardTop}>
-                <View style={styles.statusWaiting}>
-                    <Text style={styles.statusWaitingText}>
-                        • En attente
+                    <Text style={styles.subtitle}>
+                        aujourd'hui ?
                     </Text>
                 </View>
-                <Text style={styles.date}>Il y a 10 min</Text>
-            </View>
-            <Text style={styles.conversationTitle}>
-                Problème de livraison commande
-                </Text>
-                <Text style={styles.orderNumber}>
-                    #4928
-                </Text>
 
-                <Text 
-                 style={styles.messagePreview}
-                 numberOfLines={1}
+                <View style={styles.helpCard}>
+                    <Text style={styles.helpTitle}>
+                        Besoin d'aide ?
+                    </Text>
+
+                    <Text style={styles.helpText}>
+                        Notre équipe de support est là pour
+                        {"\n"}
+                        répondre à vos questions sur vos
+                        {"\n"}
+                        commandes Souq Express.
+                    </Text>
+
+                    <TouchableOpacity
+                        style={styles.newConversationButton}
+                        activeOpacity={0.8}
+                        onPress={() =>
+                            router.push("/(client)/new-conversation")
+                        }
+                    >
+                        <Ionicons
+                            name="chatbox-outline"
+                            size={18}
+                            color="#FFFFFF"
+                        />
+
+                        <Text style={styles.newConversationText}>
+                            Nouvelle conversation
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.sectionHeader}>
+                    <Text style={styles.sectionTitle}>
+                        conversations récentes
+                    </Text>
+                </View>
+
+                <TouchableOpacity
+                    style={styles.conversationCard}
+                    activeOpacity={0.8}
+                    onPress={() => router.push("/(client)/chat")}
                 >
-                    Je n'ai pas reçu le colis qui était censé arriv...
-                </Text>
-         </TouchableOpacity>
-          <TouchableOpacity
-           style={styles.conversationCard}
-           activeOpacity={0.8}
-           onPress={() => router.push("/(client)/chat")}
-          >
-            <View style={styles.cardTop}>
-                <View style={styles.statusProgress}>
-                    <Text style={styles.statusProgressText}>
-                        • En cours
+                    <View style={styles.cardTop}>
+                        <View style={styles.statusWaiting}>
+                            <Text style={styles.statusWaitingText}>
+                                • En attente
+                            </Text>
+                        </View>
+
+                        <Text style={styles.date}>
+                            Il y a 10 min
+                        </Text>
+                    </View>
+
+                    <Text style={styles.conversationTitle}>
+                        Problème de livraison commande
                     </Text>
-                </View>
 
-                <Text style={styles.date}>
-                    Hier, 14:30
-                </Text>
-            </View>
-
-            <View style={styles.agentRow}>
-                <View style={styles.avatar}>
-                    <Text style={styles.avatarText}>
-                                         👩
-                      </Text>
-                </View>
-
-                <Text style={styles.conversationTitle}>
-                    Demande de remboursement
+                    <Text style={styles.orderNumber}>
+                        #4928
                     </Text>
-            </View>
 
-            <Text 
-              style={styles.messagePreview}
-              numberOfLines={1}
-            >
-                L'agent Youssef est en train d'examiner votr...
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-            style={styles.conversationCard}
-            activeOpacity={0.8}
-            onPress={() => router.push("/(client)/chat")}
-          >
-
-            <View style={styles.cardTop}>
-                <View style={styles.statusClosed}>
-                    <Text style={styles.statusClosedText}>
-                        • Fermée
+                    <Text
+                        style={styles.messagePreview}
+                        numberOfLines={1}
+                    >
+                        Je n'ai pas reçu le colis qui était censé arriv...
                     </Text>
-                </View>
+                </TouchableOpacity>
 
-                <Text style={styles.date}>
-                    12 Oct 2025
-                </Text>
-            </View>
+                <TouchableOpacity
+                    style={styles.conversationCard}
+                    activeOpacity={0.8}
+                    onPress={() => router.push("/(client)/chat")}
+                >
+                    <View style={styles.cardTop}>
+                        <View style={styles.statusProgress}>
+                            <Text style={styles.statusProgressText}>
+                                • En cours
+                            </Text>
+                        </View>
 
-            <Text style={styles.conversationTitle}>
-                Question sur la garantie
-            </Text>
-          </TouchableOpacity>
+                        <Text style={styles.date}>
+                            Hier, 14:30
+                        </Text>
+                    </View>
+
+                    <View style={styles.agentRow}>
+                        <View style={styles.avatar}>
+                            <Text style={styles.avatarText}>
+                                👩
+                            </Text>
+                        </View>
+
+                        <Text style={styles.conversationTitle}>
+                            Demande de remboursement
+                        </Text>
+                    </View>
+
+                    <Text
+                        style={styles.messagePreview}
+                        numberOfLines={1}
+                    >
+                        L'agent Youssef est en train d'examiner votr...
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.conversationCard}
+                    activeOpacity={0.8}
+                    onPress={() => router.push("/(client)/chat")}
+                >
+                    <View style={styles.cardTop}>
+                        <View style={styles.statusClosed}>
+                            <Text style={styles.statusClosedText}>
+                                • Fermée
+                            </Text>
+                        </View>
+
+                        <Text style={styles.date}>
+                            12 Oct 2025
+                        </Text>
+                    </View>
+
+                    <Text style={styles.conversationTitle}>
+                        Question sur la garantie
+                    </Text>
+                </TouchableOpacity>
+
             </ScrollView>
-
-        </View>
+        </SafeAreaView>
     );
 }
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#05051F",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#05051F",
+    },
 
-  content: {
-    paddingHorizontal: 16,
-    paddingTop: 20,
-    paddingBottom: 30,
-  },
+    content: {
+        paddingHorizontal: 16,
+        paddingTop: 20,
+        paddingBottom: 30,
+    },
 
-  
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 32,
-  },
+    header: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 32,
+    },
 
-  headerLeft: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
+    headerLeft: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
 
-  logo: {
-   width: 100,
+    logo: {
+        width: 100,
         height: 90,
         alignSelf: "center",
         marginBottom: -40,
         resizeMode: "contain",
-  },
+    },
 
- 
+    welcome: {
+        marginBottom: 22,
+    },
 
-  
-  welcome: {
-    marginBottom: 22,
-  },
+    title: {
+        color: "#FFFFFF",
+        fontSize: 28,
+        fontWeight: "800",
+        marginBottom: 4,
+    },
 
-  title: {
-    color: "#FFFFFF",
-    fontSize: 28,
-    fontWeight: "800",
-    marginBottom: 4,
-  },
+    subtitle: {
+        color: "#D5DBEA",
+        fontSize: 12,
+        lineHeight: 17,
+    },
 
+    helpCard: {
+        backgroundColor: "#AFC2FF",
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 24,
+    },
 
-  subtitle: {
-    color: "#D5DBEA",
-    fontSize: 12,
-    lineHeight: 17,
-  },
+    helpTitle: {
+        color: "#071027",
+        fontSize: 18,
+        fontWeight: "800",
+        marginBottom: 10,
+    },
 
+    helpText: {
+        color: "#33456F",
+        fontSize: 11,
+        lineHeight: 17,
+        marginBottom: 14,
+    },
 
-  helpCard: {
-    backgroundColor: "#AFC2FF",
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 24,
-  },
+    newConversationButton: {
+        height: 40,
+        backgroundColor: "#071027",
+        borderRadius: 7,
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "row",
+    },
 
-  helpTitle: {
-    color: "#071027",
-    fontSize: 18,
-    fontWeight: "800",
-    marginBottom: 10,
-  },
+    newConversationText: {
+        color: "#FFFFFF",
+        fontSize: 11,
+        fontWeight: "600",
+        marginLeft: 5,
+    },
 
-  helpText: {
-    color: "#33456F",
-    fontSize: 11,
-    lineHeight: 17,
-    marginBottom: 14,
-  },
+    sectionHeader: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 12,
+    },
 
-  newConversationButton: {
-    height: 40,
-    backgroundColor: "#071027",
-    borderRadius: 7,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-  },
+    sectionTitle: {
+        color: "#FFFFFF",
+        fontSize: 17,
+        fontWeight: "800",
+    },
 
-  newConversationText: {
-    color: "#FFFFFF",
-    fontSize: 11,
-    fontWeight: "600",
-    marginLeft: 5,
-  },
+    conversationCard: {
+        backgroundColor: "#14142D",
+        borderRadius: 10,
+        padding: 14,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: "#242642",
+    },
 
-  
-  sectionHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 12,
-  },
+    cardTop: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 9,
+    },
 
-  sectionTitle: {
-    color: "#FFFFFF",
-    fontSize: 17,
-    fontWeight: "800",
-  },
+    statusWaiting: {
+        backgroundColor: "#3A321C",
+        borderRadius: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+    },
 
-  seeAll: {
-    color: "#FFFFFF",
-    fontSize: 10,
-    fontWeight: "600",
-  },
+    statusWaitingText: {
+        color: "#F5C84B",
+        fontSize: 9,
+        fontWeight: "700",
+    },
 
-  
-  conversationCard: {
-    backgroundColor: "#14142D",
-    borderRadius: 10,
-    padding: 14,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "#242642",
-  },
+    statusProgress: {
+        backgroundColor: "#142B4A",
+        borderRadius: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+    },
 
-  cardTop: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 9,
-  },
+    statusProgressText: {
+        color: "#5EA1FF",
+        fontSize: 9,
+        fontWeight: "700",
+    },
 
-  statusWaiting: {
-    backgroundColor: "#3A321C",
-    borderRadius: 10,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
+    statusClosed: {
+        backgroundColor: "#222938",
+        borderRadius: 10,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
+    },
 
-  statusWaitingText: {
-    color: "#F5C84B",
-    fontSize: 9,
-    fontWeight: "700",
-  },
+    statusClosedText: {
+        color: "#8991A5",
+        fontSize: 9,
+        fontWeight: "700",
+    },
 
-  statusProgress: {
-    backgroundColor: "#142B4A",
-    borderRadius: 10,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
+    date: {
+        color: "#8991A5",
+        fontSize: 9,
+        marginLeft: 8,
+    },
 
-  statusProgressText: {
-    color: "#5EA1FF",
-    fontSize: 9,
-    fontWeight: "700",
-  },
+    conversationTitle: {
+        color: "#FFFFFF",
+        fontSize: 13,
+        fontWeight: "700",
+        marginBottom: 3,
+    },
 
-  statusClosed: {
-    backgroundColor: "#222938",
-    borderRadius: 10,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-  },
+    orderNumber: {
+        color: "#FFFFFF",
+        fontSize: 11,
+        fontWeight: "600",
+        marginBottom: 6,
+    },
 
-  statusClosedText: {
-    color: "#8991A5",
-    fontSize: 9,
-    fontWeight: "700",
-  },
+    messagePreview: {
+        color: "#7D86A0",
+        fontSize: 10,
+        lineHeight: 15,
+    },
 
-  date: {
-    color: "#8991A5",
-    fontSize: 9,
-    marginLeft: 8,
-  },
+    agentRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 6,
+    },
 
-  conversationTitle: {
-    color: "#FFFFFF",
-    fontSize: 13,
-    fontWeight: "700",
-    marginBottom: 3,
-  },
+    avatar: {
+        width: 25,
+        height: 25,
+        borderRadius: 13,
+        backgroundColor: "#24314A",
+        justifyContent: "center",
+        alignItems: "center",
+        marginRight: 7,
+    },
 
-  orderNumber: {
-    color: "#FFFFFF",
-    fontSize: 11,
-    fontWeight: "600",
-    marginBottom: 6,
-  },
+    avatarText: {
+        fontSize: 13,
+    },
 
-  messagePreview: {
-    color: "#7D86A0",
-    fontSize: 10,
-    lineHeight: 15,
-  },
+    bottomNav: {
+        height: 70,
+        flexDirection: "row",
+        justifyContent: "space-around",
+        alignItems: "center",
+        backgroundColor: "#14142D",
+        borderTopWidth: 1,
+        borderTopColor: "#20203A",
+    },
 
-  
-  agentRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 6,
-  },
+    navItem: {
+        alignItems: "center",
+        justifyContent: "center",
+    },
 
-  avatar: {
-    width: 25,
-    height: 25,
-    borderRadius: 13,
-    backgroundColor: "#24314A",
-    justifyContent: "center",
-    alignItems: "center",
-    marginRight: 7,
-  },
-
-  avatarText: {
-    fontSize: 13,
-  },
-
-
-  bottomNav: {
-    height: 70,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: "#14142D",
-    borderTopWidth: 1,
-    borderTopColor: "#20203A",
-  },
-
-  navItem: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  navText: {
-    color: "#777F99",
-    fontSize: 10,
-    marginTop: 5,
-  },
-
- 
+    navText: {
+        color: "#777F99",
+        fontSize: 10,
+        marginTop: 5,
+    },
 });
-   

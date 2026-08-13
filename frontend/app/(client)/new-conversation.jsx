@@ -24,7 +24,7 @@ export default function NewConversation() {
   return (
     <View style={styles.container}>
 
-      {/* Header */}
+      
       <View style={styles.header}>
         <TouchableOpacity onPress={() => router.back()}>
           <Ionicons

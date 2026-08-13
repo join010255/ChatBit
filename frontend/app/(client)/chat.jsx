@@ -5,9 +5,10 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  ScrollView,
+  ScrollView
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 
 export default function Chat() {
@@ -22,156 +23,159 @@ export default function Chat() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
 
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => router.back()}
+        {/* HEADER */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => router.back()}>
+            <Ionicons
+              name="arrow-back"
+              size={26}
+              color="#FFFFFF"
+            />
+          </TouchableOpacity>
+
+          <View style={styles.agentInfo}>
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText}>👩</Text>
+            </View>
+
+            <View>
+              <Text style={styles.agentName}>Sara</Text>
+
+              <Text style={styles.online}>
+                ● En ligne
+              </Text>
+            </View>
+          </View>
+
+          <TouchableOpacity>
+            <Ionicons
+              name="ellipsis-vertical"
+              size={24}
+              color="#FFFFFF"
+            />
+          </TouchableOpacity>
+        </View>
+
+        {/* MESSAGES */}
+        <ScrollView
+          style={styles.messages}
+          contentContainerStyle={styles.messagesContent}
+          showsVerticalScrollIndicator={false}
         >
-          <Ionicons
-            name="arrow-back"
-            size={26}
-            color="#FFFFFF"
+          <Text style={styles.date}>
+            Aujourd'hui
+          </Text>
+
+          {/* MESSAGE CLIENT */}
+          <View style={styles.clientMessageContainer}>
+            <View style={styles.clientMessage}>
+              <Text style={styles.clientText}>
+                Bonjour Sara, j'ai passé une commande
+                (Réf: SQ-8472) hier mais je n'ai pas
+                reçu l'e-mail de confirmation.
+                Est-ce normal ?
+              </Text>
+
+              <Text style={styles.time}>
+                10:14 ✓✓
+              </Text>
+            </View>
+          </View>
+
+          {/* MESSAGE AGENT */}
+          <View style={styles.agentMessageContainer}>
+            <View style={styles.agentMessage}>
+              <Text style={styles.agentText}>
+                Bonjour ! Bienvenue chez Souq Express.
+                Je suis désolée pour ce désagrément.
+                Je vérifie immédiatement le statut de
+                votre commande SQ-8472.
+              </Text>
+
+              <Text style={styles.agentTime}>
+                10:16
+              </Text>
+            </View>
+          </View>
+
+          {/* MESSAGE AGENT */}
+          <View style={styles.agentMessageContainer}>
+            <View style={styles.agentMessage}>
+              <Text style={styles.agentText}>
+                Je vois que votre commande a bien été
+                validée et est actuellement "En cours"
+                de préparation. L'e-mail a pu se glisser
+                dans vos spams.
+              </Text>
+
+              <Text style={styles.agentTime}>
+                10:18
+              </Text>
+            </View>
+          </View>
+
+          {/* MESSAGE CLIENT */}
+          <View style={styles.clientMessageContainer}>
+            <View style={styles.clientMessage}>
+              <Text style={styles.clientText}>
+                Ah oui, je le vois dans mes spams !
+                Merci beaucoup. Une idée du délai
+                de livraison sur Casablanca ?
+              </Text>
+
+              <Text style={styles.time}>
+                10:20 ✓✓
+              </Text>
+            </View>
+          </View>
+        </ScrollView>
+
+        {/* INPUT */}
+        <View style={styles.inputContainer}>
+
+          <TouchableOpacity>
+            <Ionicons
+              name="attach-outline"
+              size={25}
+              color="#AFC2FF"
+            />
+          </TouchableOpacity>
+
+          <TextInput
+            style={styles.input}
+            placeholder="Écrivez votre message..."
+            placeholderTextColor="#7D86A0"
+            value={message}
+            onChangeText={setMessage}
           />
-        </TouchableOpacity>
 
-        <View style={styles.agentInfo}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>👩</Text>
-          </View>
+          <TouchableOpacity
+            style={styles.sendButton}
+            onPress={sendMessage}
+          >
+            <Ionicons
+              name="send"
+              size={19}
+              color="#FFFFFF"
+            />
+          </TouchableOpacity>
 
-          <View>
-            <Text style={styles.agentName}>Sara</Text>
-
-            <Text style={styles.online}>
-              ● En ligne
-            </Text>
-          </View>
         </View>
-
-        <TouchableOpacity>
-          <Ionicons
-            name="ellipsis-vertical"
-            size={24}
-            color="#FFFFFF"
-          />
-        </TouchableOpacity>
-      </View>
-
-      {/* Messages */}
-      <ScrollView
-        style={styles.messages}
-        contentContainerStyle={styles.messagesContent}
-        showsVerticalScrollIndicator={false}
-      >
-
-        <Text style={styles.date}>
-          Aujourd'hui
-        </Text>
-
-        {/* Message client */}
-        <View style={styles.clientMessageContainer}>
-          <View style={styles.clientMessage}>
-            <Text style={styles.clientText}>
-              Bonjour Sara, j'ai passé une commande
-              (Réf: SQ-8472) hier mais je n'ai pas
-              reçu l'e-mail de confirmation.
-              Est-ce normal ?
-            </Text>
-
-            <Text style={styles.time}>
-              10:14 ✓✓
-            </Text>
-          </View>
-        </View>
-
-        {/* Message agent */}
-        <View style={styles.agentMessageContainer}>
-          <View style={styles.agentMessage}>
-            <Text style={styles.agentText}>
-              Bonjour ! Bienvenue chez Souq Express.
-              Je suis désolée pour ce désagrément.
-              Je vérifie immédiatement le statut de
-              votre commande SQ-8472.
-            </Text>
-
-            <Text style={styles.agentTime}>
-              10:16
-            </Text>
-          </View>
-        </View>
-
-        {/* Message agent */}
-        <View style={styles.agentMessageContainer}>
-          <View style={styles.agentMessage}>
-            <Text style={styles.agentText}>
-              Je vois que votre commande a bien été
-              validée et est actuellement "En cours"
-              de préparation. L'e-mail a pu se glisser
-              dans vos spams.
-            </Text>
-
-            <Text style={styles.agentTime}>
-              10:18
-            </Text>
-          </View>
-        </View>
-
-        {/* Message client */}
-        <View style={styles.clientMessageContainer}>
-          <View style={styles.clientMessage}>
-            <Text style={styles.clientText}>
-              Ah oui, je le vois dans mes spams !
-              Merci beaucoup. Une idée du délai
-              de livraison sur Casablanca ?
-            </Text>
-
-            <Text style={styles.time}>
-              10:20 ✓✓
-            </Text>
-          </View>
-        </View>
-
-      </ScrollView>
-
-      {/* Input */}
-      <View style={styles.inputContainer}>
-
-        <TouchableOpacity>
-          <Ionicons
-            name="attach-outline"
-            size={25}
-            color="#AFC2FF"
-          />
-        </TouchableOpacity>
-
-        <TextInput
-          style={styles.input}
-          placeholder="Écrivez votre message..."
-          placeholderTextColor="#7D86A0"
-          value={message}
-          onChangeText={setMessage}
-        />
-
-        <TouchableOpacity
-          style={styles.sendButton}
-          onPress={sendMessage}
-        >
-          <Ionicons
-            name="send"
-            size={19}
-            color="#FFFFFF"
-          />
-        </TouchableOpacity>
 
       </View>
-
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#05051F",
+  },
+
   container: {
     flex: 1,
     backgroundColor: "#05051F",
