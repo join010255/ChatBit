@@ -9,25 +9,25 @@ import {
     Image,
 } from "react-native";
 import { router } from "expo-router";
+import { login } from "../../services/auth";
+import { useAuthStore } from "../../store/authStore";
 import { loginSchema } from "../../validations/loginSchema";
 
 export default function login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+     
+    const loginStore = useAuthStore((state) => state.login);
+    const handleLogin = async () => {
+  try {
+    const data = await login(email, password);
 
-     const handleLogin = () => {
-  const result = loginSchema.safeParse({
-    email: email.trim(),
-    password,
-  });
+    await loginStore(data.user, data.token);
 
-  if (!result.success) {
-    console.log(result.error.issues);
-    return;
+    router.replace("/(client)/home");
+  } catch (error) {
+    console.log(error.response?.data || error.message);
   }
-
-  console.log("Validation réussie");
-  router.replace("/(client)/home");
 };
     
 

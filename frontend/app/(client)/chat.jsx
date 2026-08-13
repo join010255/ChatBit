@@ -26,7 +26,7 @@ export default function Chat() {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
 
-        {/* HEADER */}
+    
         <View style={styles.header}>
           <TouchableOpacity onPress={() => router.back()}>
             <Ionicons
@@ -49,14 +49,6 @@ export default function Chat() {
               </Text>
             </View>
           </View>
-
-          <TouchableOpacity>
-            <Ionicons
-              name="ellipsis-vertical"
-              size={24}
-              color="#FFFFFF"
-            />
-          </TouchableOpacity>
         </View>
 
         {/* MESSAGES */}

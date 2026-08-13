@@ -1,20 +1,23 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { router } from "expo-router";
 
 export default function Splash() {
   return (
     <View style={styles.container}>
 
-      <View style={styles.logoBox}>
-      <View style={styles.logo}>
-        <Text style={styles.logoText}>c</Text>
-        </View>
-        </View>
+      <Image
+               source={require("../assets/images/unnamed.png")}
+               style={styles.logo}
+              />
+      
+      
 
         <Text style={styles.appName}>ChatBit</Text>
        
        <Text style={styles.description}>
-        Votre support, toujours à portée de main
+        Votre support, toujours à portée de
+         {"\n"}
+         main
         </Text>
 
         <TouchableOpacity
@@ -39,66 +42,53 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 
-  logoBox: {
-    width: 90,
-    height: 90,
-    backgroundColor: "#18233A",
-    borderRadius: 14,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 12,
-  },
 
   logo: {
-    width: 60,
-    height: 60,
+    width: 100,
+    height: 100,
     backgroundColor: "#FFFFFF",
     borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 20
   },
-  
-  logoText: {
-    color: "#1769FF",
-    fontSize: 40,
-    fontWeight: "900",
-  },
-
+ 
   appName: {
     color: "#FFFFFF",
-    fontSize: 25,
+    fontSize: 40,
     fontWeight: "700",
-    marginBottom: 8,
+    marginBottom: 10,
   },
 
   description: {
     color: "#8D99B5",
-    fontSize: 15,
+    fontSize: 20,
     textAlign: "center",
   },
 
   button: {
     position: "absolute",
     bottom: 20,
-    left: 16,
-    right: 16,
-    height: 50,
+    left: 30,
+    right: 30,
+    height: 65,
     backgroundColor: "#AFC7FF",
-    borderRadius: 5,
+    borderRadius: 15,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 70,
   },
 
   buttonText: {
     color: "#07142F",
-    fontSize: 13,
+    fontSize: 20,
     fontWeight: "600",
   },
 
   arrow: {
     color: "#07142F",
-    fontSize: 17,
-    marginLeft: 6,
+    fontSize: 15,
+    marginLeft: 10,
   },
 });
