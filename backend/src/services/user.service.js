@@ -1,6 +1,7 @@
 import User  from "../models/user.model.js";
 import Password from "../utils/password.js"
 import ganerateTokens from "../utils/jwt.js";
+import { ca } from "zod/v4/locales";
 
 
 class UserService{
@@ -35,6 +36,18 @@ class UserService{
                 ...httpBody,
                 password : passwordHashed
             });
+        }catch(error){
+            throw new Error("Server Error")
+        }
+    };
+
+    async me(httpBody){
+        try{
+            const dataUser = await User.findByPk(httpBody.user.id);
+            if(!dataUser){
+                throw new Error("User Not Found")
+            }
+            return dataUser;
         }catch(error){
             throw new Error("Server Error")
         }
