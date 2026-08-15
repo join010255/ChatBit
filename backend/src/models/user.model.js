@@ -49,10 +49,6 @@ const User = sequelize.define(
       defaultValue: false,
     },
 
-    refreash_token : {
-      type : DataTypes.STRING,
-    },
-
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,

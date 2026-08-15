@@ -7,6 +7,6 @@ const userRouter = Router();
 
 userRouter.post("/login", loginValidation, UserControles.login);
 userRouter.post("/register", registerValidation, UserControles.register);
-userRouter.get("/me", authenticateToken, authorization, UserControles.me);
+userRouter.get("/me", authenticateToken, authorization("agent", "client"), UserControles.me);
 
 export default userRouter;

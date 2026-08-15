@@ -1,4 +1,4 @@
-import UserService from "../services/user.service.js";
+import UserService from "../services/auth.service.js";
 
 class UserControles{
     async login(req, res){

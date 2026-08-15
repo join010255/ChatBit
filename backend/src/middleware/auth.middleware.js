@@ -36,8 +36,9 @@ const authorization = (...role) => {
                     message : "You Dont Have Role"
                 })
             }
-        }catch(eror){
-            console.log(eror)
+            next();
+        }catch(error){
+            console.log(error)
             return res.status(500).json({
                 message : "server Error"
             })
