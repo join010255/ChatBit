@@ -18,7 +18,7 @@ class UserService{
             return await ganerateTokens();
 
         }catch(error){
-            console.log(error)
+            throw new Error("Server Error");
         }
     };
     

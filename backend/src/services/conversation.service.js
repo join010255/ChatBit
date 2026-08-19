@@ -4,17 +4,17 @@ import User from "../models/user.model.js";
 
 class ConversationService {
     // roles client get
-    async createConversation(httpBody) {
+    async createConversation(httpRequest) {
         try {
-            const userData = await User.findOne({
-                where: {
-                    id: httpBody.user,
-                }
-            });
+            const userData = await User.findByPk(httpRequest.user.id);
             if(!userData) {
                 throw new Error("User Not Found");
             }
-            const conversation = await Conversation.create(httpBody);
+            const conversation = await Conversation.create({
+                client_id : httpRequest.user.id,
+                subject : httpRequest.body.subject,
+                
+            });
             return {
                 message : "Conversation Created",
                 data : conversation
@@ -67,11 +67,7 @@ class ConversationService {
     // role agent 
     async deleteConversation(httpBody) {
         try {
-            const conversationData = await Conversation.findOne({
-                where: {
-                    id: httpBody.user.id,
-                }
-            });
+            const conversationData = await Conversation.findByPk(httpBody.user.id);
             if (!conversationData) {
                 throw new Error("Conversation Not Found");
             }
