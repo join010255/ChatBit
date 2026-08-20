@@ -7,7 +7,8 @@ class UserService{
     async login(httpBody){
         try{
             const userData = await User.findOne({
-                where : {email : httpBody.email}
+                where : {email : httpBody.email},
+                
             });
 
             if(!userData){

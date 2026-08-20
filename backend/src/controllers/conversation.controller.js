@@ -2,16 +2,16 @@ import conversationService from "../services/conversation.service.js";
 
 
 
-class ConversationController{
-    async getConversation(req,res){
-        try{
-            await conversationService.getConversations(req.user.id);
+class ConversationController {
+    async getConversations(req, res) {
+        try {
+            const conversations = await conversationService.getConversation(req.user.id);
             return res.status(201).json({
                 success: true,
                 message: "Conversations fetched successfully",
                 data: conversations
-            })
-        }catch(error){
+            });
+        } catch (error) {
             return res.status(500).json({
                 success: false,
                 message: "Internal server error",
@@ -20,14 +20,14 @@ class ConversationController{
         }
     }
 
-    async createConversation(req, res){
-        try{
-            await conversationService.createConversation();
+    async createConversations(req, res) {
+        try {
+            await conversationService.createConversation(req);
             return res.status(201).json({
                 success: true,
                 message: "Conversation created successfully",
             })
-        }catch(error){
+        } catch (error) {
             return res.status(500).json({
                 success: false,
                 message: "Internal server error",
@@ -35,6 +35,22 @@ class ConversationController{
             });
         }
     }
+
+    async closedConversation(req, res) {
+        try {
+            await conversationService.deleteConversation(req);
+            return res.status(201).json({
+                success: true,
+                message: "Conversation closed successfully",
+            })
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: "Internal server error",
+                error: error.message
+            });
+        }
+    };
 }
 
 export default new ConversationController();

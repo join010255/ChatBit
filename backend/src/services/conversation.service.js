@@ -67,7 +67,8 @@ class ConversationService {
     // role agent 
     async deleteConversation(httpBody) {
         try {
-            const conversationData = await Conversation.findByPk(httpBody.user.id);
+            const idConversation = httpBody.params.id;
+            const conversationData = await Conversation.findByPk(idConversation);
             if (!conversationData) {
                 throw new Error("Conversation Not Found");
             }

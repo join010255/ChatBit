@@ -1,22 +1,31 @@
+import dotenv from "dotenv";
+import express from "express";
 import sequelize from "./config/database.js";
 import "./models/index.js";
-import dotenv from "dotenv";
-dotenv.config({path : "../.env"}); 
-import express from "express";
 
-const app = express();
+dotenv.config({path : "../.env"});
 
-try {
-  await sequelize.authenticate();
-  console.log("Database connected");
+const main = async() => {
+  const app = express();
 
-  await sequelize.sync({ alter: true });
+  app.use(express.json());
+  app.use()
+  try {
+    await sequelize.authenticate();
+    console.log("Database connected");
 
-  console.log("Tables are created");
-} catch (error) {
-  console.error("Database error:", error);
+    await sequelize.sync({ alter: true });
+
+    console.log("Tables are created");
+  } catch (error) {
+    console.error("Database error:", error);
+  }
+
+  app.listen(process.env.PORT, () => {
+    console.log(`Server is running on port http://localhost:${process.env.PORT}`);
+  });
 }
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+main().catch(err => {
+  console.error("Error:", err);
 });
