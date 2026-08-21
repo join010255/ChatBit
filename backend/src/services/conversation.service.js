@@ -65,21 +65,25 @@ class ConversationService {
     }
 }
     // role agent 
-    async deleteConversation(httpBody) {
+    async deleteConversations(httpBody) {
         try {
             const idConversation = httpBody.params.id;
             const conversationData = await Conversation.findByPk(idConversation);
             if (!conversationData) {
                 throw new Error("Conversation Not Found");
             }
-            await conversationData.destroy();
+            await conversationData.update({
+                status : "closed",
+                closed_at : new Date(),
+            });
             return {
-                message : "Conversation Deleted",
+                message : "Conversation closed",
             }
         } catch (error) {
             throw new Error("Server Error");
         }
     }
+    
     
 }
 

@@ -11,7 +11,6 @@ const ganerateTokens = async(userId) => {
             throw new Error("User Not Found");
         }
         const payload = {id : userId.id}
-        console.log("hello word")
         const [acessToken, reafreshToken] = await Promise.all([
             Promise.resolve(
                 jwt.sign(

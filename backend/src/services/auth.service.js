@@ -7,16 +7,15 @@ class UserService{
     async login(httpBody){
         try{
             const userData = await User.findOne({
-                where : {email : httpBody.email},
-                
+                where : {email : httpBody.email}
             });
-
+            
             if(!userData){
                 throw new Error("User Not found");
             }else if(!Password.comparePassword(httpBody.password, userData.password)){
                 throw new Error("Email or Password Is not true")
             }
-            return await ganerateTokens();
+            return await ganerateTokens(userData);
 
         }catch(error){
             throw new Error("Server Error");
@@ -43,7 +42,9 @@ class UserService{
 
     async me(httpBody){
         try{
-            const dataUser = await User.findByPk(httpBody.user.id);
+            const dataUser = await User.findByPk(httpBody.user.id, {
+                attributes : {exclude : ["password", "role", "is_online"]}
+            });
             if(!dataUser){
                 throw new Error("User Not Found")
             }

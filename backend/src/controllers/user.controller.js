@@ -4,6 +4,11 @@ class UserControles{
     async login(req, res){
         try{
             const result = await UserService.login(req.body);
+            if(!result){
+                return res.status(404).json({
+                    message : "user not found"
+                })
+            }
             return res.status(201).json(result)
         }catch(error){
             return res.status(401).json({
